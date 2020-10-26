@@ -1,5 +1,49 @@
 <h1>{{title}}</h1>
 
-<ul>
-  <li *ngFor='let entry of entries'>{{entry.id}} - {{entry.projName}} - {{entry.platNo}} - {{entry.costElement}} - {{entry.subCostElement}} - {{entry.section}} - {{entry.matType}} - {{entry.matVariant}} - {{entry.procMethod}} - {{entry.dwgNo}} - {{entry.dwgCode}} - {{entry.matGroup}} - {{entry.description}} - {{entry.diameter}} - {{entry.thickness}} - {{entry.nal}} - {{entry.unitWeight}} - {{entry.baseWeight}} - {{entry.surfaceArea}}</li>
-</ul>
+<table mat-table class="mat-elevation-z8">
+
+    <tr>
+      <th mat-header-cell style="width: 3%">ID</th>
+      <th mat-header-cell style="width: 10%">Project Name</th>
+      <th mat-header-cell style="width: 5%">Platform Number</th>
+      <th mat-header-cell style="width: 5%">Cost Element</th>
+      <th mat-header-cell style="width: 5%">Sub Cost Element</th>
+      <th mat-header-cell style="width: 5%">Section</th>
+      <th mat-header-cell style="width: 5%">Material Type</th>
+      <th mat-header-cell style="width: 5%">Material Variant</th>
+      <th mat-header-cell style="width: 5%">Procurement Method</th>
+      <th mat-header-cell style="width: 5%">DWG Number</th>
+      <th mat-header-cell style="width: 5%">DWG Code</th>
+      <th mat-header-cell style="width: 5%">Material Group</th>
+      <th mat-header-cell style="width: 7%">Description</th>
+      <th mat-header-cell style="width: 5%">Diameter</th>
+      <th mat-header-cell style="width: 5%">Thickness</th>
+      <th mat-header-cell style="width: 5%">NAL</th>
+      <th mat-header-cell style="width: 5%">Unit Weight</th>
+      <th mat-header-cell style="width: 5%">BaseWeight</th>
+      <th mat-header-cell style="width: 5%">Surface Area</th>
+    </tr>
+      
+    <tr *ngFor='let entry of entries'>
+      <td mat-cell style="width: 3%">{{entry.id}}</td>
+      <td mat-cell style="width: 10%">{{entry.projName}}</td>   
+      <td mat-cell style="width: 5%">{{entry.platNo}}</td>
+      <td mat-cell style="width: 5%">{{entry.costElement}}</td>    
+      <td mat-cell style="width: 5%">{{entry.subCostElement}}</td>    
+      <td mat-cell style="width: 5%">{{entry.section}}</td>    
+      <td mat-cell style="width: 5%">{{entry.matType}}</td>    
+      <td mat-cell style="width: 5%">{{entry.matVariant}}</td>    
+      <td mat-cell style="width: 5%">{{entry.procMethod}}</td>    
+      <td mat-cell style="width: 5%">{{entry.dwgNo}}</td>     
+      <td mat-cell style="width: 5%">{{entry.dwgCode}}</td>    
+      <td mat-cell style="width: 5%">{{entry.matGroup}}</td>     
+      <td mat-cell style="width: 7%">{{entry.description}}</td>    
+      <td mat-cell style="width: 5%">{{entry.diameter}}</td>     
+      <td mat-cell style="width: 5%">{{entry.thickness}}</td>     
+      <td mat-cell style="width: 5%">{{entry.nal}}</td>     
+      <td mat-cell style="width: 5%">{{entry.unitWeight}}</td>     
+      <td mat-cell style="width: 5%">{{entry.baseWeight}}</td>     
+      <td mat-cell style="width: 5%">{{entry.surfaceArea}}</td>  
+    </tr>
+    
+</table>
