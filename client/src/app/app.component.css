@@ -1,14 +1,8 @@
-/* table {
-    width: 100%;
-    border: 1px solid black;
-  }
-*/
-th {
-    width: 100%;
-    border: 1px solid black;
-  }
+table {
+  width: 100%;
+}
 
-td {
-    width: 100%;
-    border: 1px solid black;
-  }
+.mat-paginator {
+  position: sticky;
+  bottom: 0;
+}
