@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import * as XLSX from 'xlsx'; 
 
 @Component ({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export class AppComponent implements OnInit {
   title = 'Material Take-Off';
+  fileName= 'MTOTable.xlsx';  
   users: any;
   entries: MatTableDataSource<any>;
   displayedColumns: string[] = ['id', 'projName', 'platNo', 'costElement', 'subCostElement',
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit {
       this.entries.paginator.firstPage();
     }
   }
-
+  
   ngOnInit() {
     this.getUsers();
     this.getEntries();
@@ -49,9 +51,25 @@ export class AppComponent implements OnInit {
       this.entries = new MatTableDataSource(response);
       this.entries.sort = this.sort;
       this.entries.paginator = this.paginator;
-    }, error => {
+    }, error => {                               
       console.log(error);
     })
   }
+
+  exportexcel(): void 
+    {
+       /* table id is passed over here */   
+       let element = document.getElementById('entries-table'); 
+       const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+       /* generate workbook and add the worksheet */
+       const wb: XLSX.WorkBook = XLSX.utils.book_new();
+       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');                                                                    
+
+       /* save to file */
+       XLSX.writeFile(wb, this.fileName);
+			
+    }
+
 }
 
