@@ -1,0 +1,131 @@
+<div class="table-wrapper">
+  
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Example: Jacket" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="entries" class="mat-elevation-z8" matSort id="entries-table">
+
+    <!-- 1. id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.id}} </td>
+    </ng-container>
+  
+    <!-- 2. projName Column -->
+    <ng-container matColumnDef="projName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.projName}} </td>
+    </ng-container>
+  
+    <!-- 3. platNo Column -->
+    <ng-container matColumnDef="platNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Platform Number </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.platNo}} </td>
+    </ng-container>
+  
+    <!-- 4. costElement Column -->
+    <ng-container matColumnDef="costElement">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cost Element </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.costElement}} </td>
+    </ng-container>
+    
+    <!-- 5. subCostElement Column -->
+    <ng-container matColumnDef="subCostElement">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sub Cost Element </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.subCostElement}} </td>
+    </ng-container>
+
+    <!-- 6. section Column -->
+    <ng-container matColumnDef="section">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Section </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.Section}} </td>
+    </ng-container>
+
+    <!-- 7. matType Column -->
+    <ng-container matColumnDef="matType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Material Type </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.matType}} </td>
+    </ng-container>
+
+    <!-- 8. matVariant Column -->
+    <ng-container matColumnDef="matVariant">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Material Variant </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.matVariant}} </td>
+    </ng-container>
+
+    <!-- 9. procMethod Column -->
+    <ng-container matColumnDef="procMethod">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Procurement Method </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.procMethod}} </td>
+    </ng-container>
+
+    <!-- 10. dwgNo Column -->
+    <ng-container matColumnDef="dwgNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DWG Number </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.dwgNo}} </td>
+    </ng-container>
+  
+    <!-- 11. dwgCode Column -->
+    <ng-container matColumnDef="dwgCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DWG Code </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.dwgCode}} </td>
+    </ng-container>
+    
+    <!-- 12. matGroup Column -->
+    <ng-container matColumnDef="matGroup">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Material Group </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.matGroup}} </td>
+    </ng-container>
+    
+    <!-- 13. description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.description}} </td>
+    </ng-container>
+    
+    <!-- 14. diameter Column -->
+    <ng-container matColumnDef="diameter">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Diameter </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.diameter}} </td>
+    </ng-container>
+    
+    <!-- 15. thickness Column -->
+    <ng-container matColumnDef="thickness">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Thickness </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.thickness}} </td>
+    </ng-container>
+    
+    <!-- 16. nal Column -->
+    <ng-container matColumnDef="nal">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> NAL </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.nal}} </td>
+    </ng-container>
+    
+    <!-- 17. unitWeight Column -->
+    <ng-container matColumnDef="unitWeight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit Weight </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.unitWeight}} </td>
+    </ng-container>
+    
+    <!-- 18. baseWeight Column -->
+    <ng-container matColumnDef="baseWeight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Base Weight </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.baseWeight}} </td>
+    </ng-container>
+    
+    <!-- 19. surfaceArea Column -->
+    <ng-container matColumnDef="surfaceArea">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Surface Area </th>
+      <td mat-cell *matCellDef="let entry"> {{entry.surfaceArea}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100, 250, 1000]"></mat-paginator>
+  
+</div>

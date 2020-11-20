@@ -23,9 +23,17 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<MtoEntry>> GetUser(int id)
+        public async Task<ActionResult<MtoEntry>> GetEntry(int id)
         {
             return await _context.Entries.FindAsync(id);
         }
+
+        [HttpGet("select-all")]
+          public async Task<ActionResult<List<MtoEntry>>> SelectAll()
+        {
+            return await _context.Entries.ToListAsync();
+        }
+
+        // [HttpGet("filter-select")]
     }
 }
