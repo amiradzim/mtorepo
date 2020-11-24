@@ -15,13 +15,26 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { ListsComponent } from './lists/lists.component';
+import { QueryFormComponent } from './query-form/query-form.component';
+import { MainComponent } from './main/main.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    PublicTableComponent
+    PublicTableComponent,
+    MemberListComponent,
+    MemberDetailComponent,
+    ListsComponent,
+    QueryFormComponent,
+    MainComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +48,8 @@ import { FormsModule } from '@angular/forms'
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 // using System.Collections.Generic;
+// using System.Linq;
 // using System.Threading.Tasks;
 // using API.Data;
 // using API.Entities;
@@ -27,7 +28,7 @@
 //         public async Task<ActionResult<List<MtoEntry>>> FilterSelect(List<MtoEntry> mtoEntry)
 //         {
 //             var results = await _context.Entries.AsQueryable()
-//             .Where(_context.Entries.SubCostElement == "Jacket");
+//             .Where(_context.Entries.SubCostElement = "Jacket");
 //         }
 //         //     // var filteredEntries = from entry in results
 //         //     //                     .Where(entry => entry.SubCostElement == "Jacket")

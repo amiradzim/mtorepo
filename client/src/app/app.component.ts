@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import * as XLSX from 'xlsx'; 
+import { User } from './_models/user';
+import { AccountService } from './_services/account.service';
 
 @Component ({
   selector: 'app-root',
@@ -10,37 +10,18 @@ import * as XLSX from 'xlsx';
 
 export class AppComponent implements OnInit {
   title = 'Material Take-Off';
-  fileName= 'MTOTable.xlsx';  
   users: any;
   
-  constructor(private http: HttpClient) {}
+  constructor(private accountService: AccountService) {}
   
   ngOnInit() {
-    this.getUsers();
+    this.setCurrentUser();
+  } 
+
+  setCurrentUser() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    this.accountService.setCurrentUser(user);
   }
-
-  getUsers() {
-    this.http.get('https://localhost:5001/api/users').subscribe(response => {
-      this.users = response;
-    }, error => {
-      console.log(error);
-    })
-  }
-
-  exportexcel(): void 
-    {
-       /* table id is passed over here */   
-       let element = document.getElementById('entries-table'); 
-       const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
-
-       /* generate workbook and add the worksheet */
-       const wb: XLSX.WorkBook = XLSX.utils.book_new();
-       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');                                                                    
-
-       /* save to file */
-       XLSX.writeFile(wb, this.fileName);
-			
-    }
 
 }
 

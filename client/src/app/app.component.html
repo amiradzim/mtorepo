@@ -1,13 +1,10 @@
+<!-- Navigation bar -->
 <app-nav-bar></app-nav-bar>
 
-<h1 class="text-center">{{title}}</h1>
-
-<div class="container">
-  <button mat-raised-button color="primary">
-    <a style="cursor: pointer" (click)="exportexcel()">
-      Download Table<!-- <mat-icon> get_app </mat-icon> -->
-    </a>
-  </button>
+<!-- Main page -->
+<div class="container pt-3">
+  <app-main></app-main>
 </div>
 
+<!-- Public-displayed table -->
 <app-public-table></app-public-table>
