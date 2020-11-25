@@ -16,15 +16,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { QueryFormComponent } from './query-form/query-form.component';
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
 import { UserGuideComponent } from './user-guide/user-guide.component';
-import { ToastrModule } from 'ngx-toastr';
+import { ToSelectComponent } from './query-form/to-select/to-select.component';
+import { ToSumComponent } from './query-form/to-sum/to-sum.component';
+import { ToGroupByComponent } from './query-form/to-group-by/to-group-by.component';
+import { SharedModule } from './_modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { ToastrModule } from 'ngx-toastr';
     QueryFormComponent,
     MainComponent,
     RegisterComponent,
-    UserGuideComponent
+    UserGuideComponent,
+    ToSelectComponent,
+    ToSumComponent,
+    ToGroupByComponent
   ],
   imports: [
     BrowserModule,
@@ -51,10 +57,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatInputModule,
     MatIconModule,
     FormsModule,
-    BsDropdownModule.forRoot(),
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    })
+    SharedModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
