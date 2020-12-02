@@ -1,53 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-
-export interface Task {
-  name: string;
-  completed: boolean;
-  color: ThemePalette;
-  subtasks?: Task[];
-}
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-query-form',
   templateUrl: './query-form.component.html',
   styleUrls: ['./query-form.component.css']
 })
+
 export class QueryFormComponent implements OnInit {
-  task: Task = 
-  {
-    name: 'To Select',
-    completed: false,
-    color: 'primary',
-    subtasks: [
-      {name: 'Cost Element', completed: false, color: 'primary'},
-    ]
-  };
-
+  isLinear = false;
+  toSelectGroup: FormGroup;
+  toGroupByGroup: FormGroup;
+  toSumGroup: FormGroup;
   allComplete: boolean = false;
-
-  updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-  }
-
-  someComplete(): boolean {
-    if (this.task.subtasks == null) {
-      return false;
-    }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
-  }
-
-  setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.task.subtasks == null) {
-      return;
-    }
-    this.task.subtasks.forEach(t => t.completed = completed);
-  }
-
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.toSelectGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.toGroupByGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.toSumGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
   }
 
 }

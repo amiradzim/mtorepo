@@ -1,9 +1,44 @@
-<form #queryForm="ngForm">
-    
-<!-- <app-to-select></app-to-select> -->
+<h3 class="text-center">Query From the Database</h3>
 
-<!-- <app-to-sum></app-to-sum> -->
-
-<!-- <app-to-group-by></app-to-group-by> -->
-
-</form>
+<div class="container">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="toSelectGroup" label="Choose which columns to select.">
+        <form [formGroup]="toSelectGroup">
+            <app-to-select></app-to-select>
+            <div>
+                <button class="btn btn-primary" matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="toGroupByGroup" label="Choose which columns to group by.">
+        <form [formGroup]="toGroupByGroup">
+            <app-to-group-by></app-to-group-by>
+            <div>
+                <button class="btn btn-secondary mr-2" matStepperPrevious>Back</button>
+                <button class="btn btn-primary ml-2" matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="toSumGroup" label="Choose which columns to sum.">
+        <form [formGroup]="toSumGroup">
+            <app-to-sum></app-to-sum>
+            <div>
+                <button class="btn btn-secondary mr-2" matStepperPrevious>Back</button>
+                <button class="btn btn-primary ml-2" matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div>
+            <h6>You are now done.</h6>
+        </div>
+        <div>
+            <button class="btn btn-secondary mr-2" matStepperPrevious>Back</button>
+            <button class="btn btn-success ml-2 mr-2" type="submit">Submit</button>
+            <button class="btn btn-danger ml-2" (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+    </mat-horizontal-stepper>
+</div>
+  

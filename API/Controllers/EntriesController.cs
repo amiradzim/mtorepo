@@ -28,12 +28,19 @@ namespace API.Controllers
             return await _context.Entries.FindAsync(id);
         }
 
-        [HttpGet("select-all")]
-          public async Task<ActionResult<List<MtoEntry>>> SelectAll()
+        [HttpGet("filter-select")]
+        public async Task<List<MtoEntry>> FilterSelect()
         {
-            return await _context.Entries.ToListAsync();
-        }
+            IQueryable<MtoEntry> qry = from entry in _context.Entries
+                                       where entry.SubCostElement == "JACKET"
+                                       select new MtoEntry
+                                       {
+                                           Id = entry.Id,
+                                           CostElement = entry.CostElement,
+                                           SubCostElement = entry.SubCostElement
+                                       };
 
-        // [HttpGet("filter-select")]
+            return await qry.ToListAsync();
+        }
     }
 }
