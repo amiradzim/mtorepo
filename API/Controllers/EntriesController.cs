@@ -32,13 +32,23 @@ namespace API.Controllers
         public async Task<List<MtoEntry>> FilterSelect()
         {
             IQueryable<MtoEntry> qry = from entry in _context.Entries
-                                       where entry.SubCostElement == "JACKET"
-                                       select new MtoEntry
-                                       {
-                                           Id = entry.Id,
-                                           CostElement = entry.CostElement,
-                                           SubCostElement = entry.SubCostElement
-                                       };
+                                    where entry.SubCostElement == "JACKET"
+                                    select new MtoEntry
+                                    {
+                                        Id = entry.Id,
+                                        CostElement = entry.CostElement,
+                                        SubCostElement = entry.SubCostElement
+                                    };
+
+            // IQueryable<MtoEntry> qry = from entry in _context.Entries
+            //                         group entry by entry.CostElement into x
+            //                         select new 
+            //                         {
+            //                             x.Id,
+            //                             x.CostElement,
+            //                             x.SubCostElement,
+            //                             x
+            //                         };
 
             return await qry.ToListAsync();
         }
