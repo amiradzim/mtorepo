@@ -5,9 +5,9 @@ namespace API.DTOs
         public int Id { get; set; }
         public string ProjName { get; set; }
         public string PlatNo { get; set; }
-        public string CostElement { get; set; }
-        public string SubCostElement { get; set; }
-        public string Section { get; set; }
+        public string PlatType { get; set; }
+        public string PlatArea { get; set; }
+        public string SubArea { get; set; }
         public string MatType { get; set; }
         public string MatVariant { get; set; }
         public string ProcMethod { get; set; }

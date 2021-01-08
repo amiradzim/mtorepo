@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201027071820_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210108024319_ChangedColumnNames")]
+    partial class ChangedColumnNames
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,6 @@ namespace API.Migrations
 
                     b.Property<long>("BaseWeight")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("CostElement")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
@@ -54,7 +51,13 @@ namespace API.Migrations
                     b.Property<long>("Nal")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("PlatArea")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PlatNo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PlatType")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProcMethod")
@@ -63,10 +66,7 @@ namespace API.Migrations
                     b.Property<string>("ProjName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Section")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SubCostElement")
+                    b.Property<string>("SubArea")
                         .HasColumnType("TEXT");
 
                     b.Property<long>("SurfaceArea")

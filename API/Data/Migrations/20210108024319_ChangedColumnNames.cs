@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class ChangedColumnNames : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,9 +15,9 @@ namespace API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ProjName = table.Column<string>(type: "TEXT", nullable: true),
                     PlatNo = table.Column<string>(type: "TEXT", nullable: true),
-                    CostElement = table.Column<string>(type: "TEXT", nullable: true),
-                    SubCostElement = table.Column<string>(type: "TEXT", nullable: true),
-                    Section = table.Column<string>(type: "TEXT", nullable: true),
+                    PlatType = table.Column<string>(type: "TEXT", nullable: true),
+                    PlatArea = table.Column<string>(type: "TEXT", nullable: true),
+                    SubArea = table.Column<string>(type: "TEXT", nullable: true),
                     MatType = table.Column<string>(type: "TEXT", nullable: true),
                     MatVariant = table.Column<string>(type: "TEXT", nullable: true),
                     ProcMethod = table.Column<string>(type: "TEXT", nullable: true),

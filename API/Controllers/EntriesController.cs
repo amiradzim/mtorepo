@@ -28,29 +28,20 @@ namespace API.Controllers
             return await _context.Entries.FindAsync(id);
         }
 
-        [HttpGet("filter-select")]
-        public async Task<List<MtoEntry>> FilterSelect()
-        {
-            IQueryable<MtoEntry> qry = from entry in _context.Entries
-                                    where entry.SubCostElement == "JACKET"
-                                    select new MtoEntry
-                                    {
-                                        Id = entry.Id,
-                                        CostElement = entry.CostElement,
-                                        SubCostElement = entry.SubCostElement
-                                    };
+        // [HttpGet("filter-select")]
+        // public async Task<List<MtoEntry>> FilterSelect()
+        // {
+        //     IQueryable<MtoEntry> qry = from entry in _context.Entries
+        //                             where entry.SubCostElement == "JACKET"
+        //                             select new MtoEntry
+        //                             {
+        //                                 Id = entry.Id,
+        //                                 CostElement = entry.CostElement,
+        //                                 SubCostElement = entry.SubCostElement,
+        //                                 Diameter = entry.Diameter
+        //                             };
 
-            // IQueryable<MtoEntry> qry = from entry in _context.Entries
-            //                         group entry by entry.CostElement into x
-            //                         select new 
-            //                         {
-            //                             x.Id,
-            //                             x.CostElement,
-            //                             x.SubCostElement,
-            //                             x
-            //                         };
-
-            return await qry.ToListAsync();
-        }
+        //     return await qry.ToListAsync();
+        // }
     }
 }
