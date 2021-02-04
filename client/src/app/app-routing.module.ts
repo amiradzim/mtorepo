@@ -7,6 +7,7 @@ import { QueryFormComponent } from './query-form/query-form.component';
 import { UserGuideComponent } from './user-guide/user-guide.component';
 import { PublicTableComponent } from './public-table/public-table.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
     
       {
         path: 'query-form', component: QueryFormComponent
+      },
+
+      {
+        path: 'upload-file', component: UploadFileComponent
       },
     
       {

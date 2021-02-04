@@ -15,11 +15,11 @@ namespace API.Entities
         public string DwgCode { get; set; }
         public string MatGroup { get; set; }
         public string Description { get; set; }
-        public long Diameter { get; set; }
-        public long Thickness { get; set; }
-        public long Nal { get; set; }
-        public long UnitWeight { get; set; }
-        public long BaseWeight { get; set; }
-        public long SurfaceArea { get; set; }
+        public float Diameter { get; set; }
+        public float Thickness { get; set; }
+        public float Nal { get; set; }
+        public float UnitWeight { get; set; }
+        public float BaseWeight { get; set; }
+        public float SurfaceArea { get; set; }
     }
 }

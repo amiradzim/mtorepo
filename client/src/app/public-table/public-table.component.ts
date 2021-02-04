@@ -22,7 +22,6 @@ export class PublicTableComponent implements OnInit {
   'diameter', 'thickness', 'nal', 'unitWeight', 'baseWeight', 'surfaceArea'];
 
   public entries: MatTableDataSource<EntryItems>;
-  public filteredValues: MatTableDataSource<TableFilter>;
   public fileName= 'MTOTable.xlsx';
   public searchForm: FormGroup;
   
@@ -49,6 +48,16 @@ export class PublicTableComponent implements OnInit {
     this.getFilterPredicate();
 
   }
+  
+  getEntries() {
+    this.http.get('https://localhost:5001/api/entries').subscribe((response: any[]) => {
+      this.entries = new MatTableDataSource(response);
+      this.entries.sort = this.sort;
+      this.entries.paginator = this.paginator;
+    }, error => {                               
+      console.log(error);
+    })
+  }
 
   searchFormInit() {
     this.searchForm = new FormGroup({
@@ -65,6 +74,10 @@ export class PublicTableComponent implements OnInit {
   }
 
   applyFilter() {
+    
+    if (this.entries.paginator) {
+      this.entries.paginator.firstPage();
+    }
 
     const prn = this.searchForm.get('projName').value;
     const pln = this.searchForm.get('platNo').value;
@@ -93,13 +106,10 @@ export class PublicTableComponent implements OnInit {
     
     this.entries.filter = filterValue.trim().toLowerCase();
 
-    if (this.entries.paginator) {
-      this.entries.paginator.firstPage();
-    }
   }
 
   getFilterPredicate() {
-    return (row: EntryItems, filters: string) => {
+    return (row: TableFilter, filters: string) => {
       // split string per '$' to array
       const filterArray = filters.split('$');
       const projName = filterArray[0];
@@ -126,7 +136,7 @@ export class PublicTableComponent implements OnInit {
       const columnMatGroup = row.matGroup;
 
       // verify fetching data by our searching values
-      const customFilterPRN = columnProjName.toLowerCase().toLowerCase().includes(projName);
+      const customFilterPRN = columnProjName.toLowerCase().includes(projName);
       const customFilterPLN = columnPlatNo.toLowerCase().includes(platNo);
       const customFilterPLT = columnPlatType.toLowerCase().includes(platType);
       const customFilterPLA = columnPlatArea.toLowerCase().includes(platArea);
@@ -153,20 +163,12 @@ export class PublicTableComponent implements OnInit {
       return matchFilter.every(Boolean);
     };
   }
-
-  getEntries() {
-    this.http.get('https://localhost:5001/api/entries').subscribe((response: any[]) => {
-      this.entries = new MatTableDataSource(response);
-      this.entries.sort = this.sort;
-      this.entries.paginator = this.paginator;
-    }, error => {                               
-      console.log(error);
-    })
+  
+  onRowClicked(row) {
+    console.log('Row clicked: ', row);
   }
 
-  exportexcel(): void 
-    {
-
+  exportexcel(): void {
        /* table id is passed over here */   
        let element = document.getElementById('entries-table'); 
        const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
@@ -177,7 +179,6 @@ export class PublicTableComponent implements OnInit {
 
        /* save to file */
        XLSX.writeFile(wb, this.fileName);
-			
     }
 
-}
+} 

@@ -12,7 +12,7 @@ export interface EntryItems {
     dwgNo: string; 
     dwgCode: string; 
     matGroup: string; 
-    description: number;
+    description: string;
     diameter: number; 
     thickness: number; 
     nal: number; 
