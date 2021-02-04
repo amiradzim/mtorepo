@@ -20,7 +20,9 @@ import { ToSelectComponent } from './query-form/to-select/to-select.component';
 import { ToSumComponent } from './query-form/to-sum/to-sum.component';
 import { ToGroupByComponent } from './query-form/to-group-by/to-group-by.component';
 import { SharedModule } from './_modules/shared.module';
-import { MaterialModule } from './_modules/material.module'
+import { MaterialModule } from './_modules/material.module';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { MemberCardComponent } from './members/member-card/member-card.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { MaterialModule } from './_modules/material.module'
     UserGuideComponent,
     ToSelectComponent,
     ToSumComponent,
-    ToGroupByComponent
+    ToGroupByComponent,
+    UploadFileComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,

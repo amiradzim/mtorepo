@@ -11,6 +11,12 @@
           <li class="nav-item">
             <a class="nav-link" routerLink='/query-form' routerLinkActive='active'>Query Database</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/upload-file' routerLinkActive='active'>Upload File</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/members' routerLinkActive='active'>Members</a>
+          </li>
         </ng-container>
         <ng-container>
           <li class="nav-item">
@@ -29,20 +35,20 @@
       </div>
 
       <form #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off" *ngIf="(accountService.currentUser$ | async) === null">
-        <input 
+        <input
         name="username"
         [(ngModel)]="model.username"
-        class="form-control mr-sm-2" 
-        type="text" 
+        class="form-control mr-sm-2"
+        type="text"
         placeholder="Username">
-        <input 
+        <input
         name="password"
         [(ngModel)]="model.password"
-        class="form-control mr-sm-2" 
-        type="password" 
+        class="form-control mr-sm-2"
+        type="password"
         placeholder="Password">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
       </form>
 
-  </div> 
+  </div>
 </nav>
